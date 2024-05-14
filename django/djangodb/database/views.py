@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import User
+from .models import Colaborator, Event, Evaluation, Criteria
 
 def	home(request):
-	all_users = User.objects.all
+	all_users = Colaborator.objects.all
 	return render(request, 'home.html', {'all':all_users})
