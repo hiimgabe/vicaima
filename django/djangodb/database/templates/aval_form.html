@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>User Criteria Form</h1>
+	<br/>
+	<h5>Colaborador: Daniel Santos</h5>
+	<br/>
+	<form>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label>
+			<select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<small id="c1Help" class="form-text text-muted">
+				Avalia a presença efetiva no posto de trabalho e o respeito pelos horários estabelecidos.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade</b></label>
+			<select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<small id="c1Help" class="form-text text-muted">
+				Observa sistematicamente os regulamentos e regras da Vicaima, nomeadamente no âmbito da higiene e 
+				segurança no trabalho, organização e limpeza; assim como revela capacidade de utilizar as ferramentas 
+				de que dispõe de forma a não haver desperdícios de material.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Disponibilidade</b></label>
+			<select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<small id="c1Help" class="form-text text-muted">
+				Demonstra disponibilidade para aceitar trabalho suplementar assim como iniciativa na resolução de 
+				problemas não previstos.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento</b></label>
+			<select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<small id="c1Help" class="form-text text-muted">
+				Capacidade para aplicar os conhecimentos e técnicas de trabalho essenciais para o desempenho das 
+				suas tarefas, assim como a preocupação de se manter atualizado e procurar oportunidades de 
+				desenvolvimento profissional.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Produtividade</b></label>
+			<select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<small id="c1Help" class="form-text text-muted">
+				Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.
+			</small>
+		</div>
+		<button type="submit" class="btn btn-primary">Save</button>
+		<button type="submit" class="btn btn-success">Submit</button>
+	</form>
+{% endblock %}

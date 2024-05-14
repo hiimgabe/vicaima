@@ -11,11 +11,87 @@
 </head>
 <body>
 	{% include 'navbar.html' %}
-
-	<H1>THIS IS THE ADD_USER PAGE</H1>
-	<!-- Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<div class="container">
+		<form method="POST">
+			{% csrf_token %}
+			{{ user_form.as_p }}
+			{{ colaborator_form.as_p }}
+			<div class="form-group">
+    			<label for="username">Username</label>
+    			<input type="text" class="form-control" id="username" placeholder="Username" name="username">
+  			</div>
+  			<div class="form-group">
+  				<label for="password">Password</label>
+  				<input type="password" class="form-control" id="password" placeholder="Password" name="password">
+				<small id="passwordHelp" class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
+  			</div>
+  			<div class="form-group">
+  				<label for="confirmPassword">Confirm Password</label>
+  				<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+  			</div>
+			<div class="form-group">
+    			<label for="num-colaborator">Nº Colaborador</label>
+    			<input type="number" class="form-control" id="num-colaborator" placeholder="Nº Colaborador" name="id_colaborator">
+  			</div>
+			<div class="form-group">
+    			<label for="first-name">Nome</label>
+    			<input type="text" class="form-control" id="first-name" placeholder="Nome" name="fname">
+  			</div>
+			<div class="form-group">
+    			<label for="last-name">Apelido</label>
+    			<input type="text" class="form-control" id="last-name" placeholder="Apelido" name="lname">
+  			</div>
+			<div class="form-group">
+    			<label for="department">Departamento</label>
+  				<select class="form-control" id="department" name="department">
+  					<option>UP1</option>
+  					<option>UP2</option>
+  					<option>UP3</option>
+  					<option>UPPF</option>
+  					<option>UPPR</option>
+  					<option>LOG</option>
+  					<option>ADMIN</option>
+  				</select>
+  			</div>
+			<div class="form-group">
+    			<label for="role">Função</label>
+  				<select class="form-control" id="role" name="role">
+  					<option>Ajudante de Motorista</option>
+  					<option>Prensador</option>
+  					<option>Operador Orladora</option>
+  					<option>Op. Máq. Junt. Folha</option>
+  					<option>Alim. L. Aut. Portas</option>
+  					<option>Chefe de Equipa UP1</option>
+  					<option>Chefe de Equipa UP2</option>
+  					<option>Chefe de Equipa UP3</option>
+  					<option>Chefe de Equipa UPPF</option>
+  					<option>Chefe de Equipa UPPR</option>
+  					<option>Chefe de Equipa LOG</option>
+  					<option>Diretor UP1</option>
+  					<option>Diretor UP2</option>
+  					<option>Diretor UP3</option>
+  					<option>Diretor UPPF</option>
+  					<option>Diretor UPPR</option>
+  					<option>Diretor LOG</option>
+  					<option>Administrador</option>
+  				</select>
+  			</div>
+			<div class="form-group">
+    		    <label for="admissionDate">Data de Admição</label>
+    		    <input type="date" class="form-control" id="admissionDate" name="admission_date">
+    		</div>
+			<div class="form-group">
+  				<label for="functionGroup">Grupo Funcional</label>
+  				<select class="form-control" id="functionGroup" name="functional_group">
+  					<option>Administradores</option>
+  					<option>Diretores</option>
+  					<option>Chefes e Coordenadores</option>
+  					<option>Operacionais</option>
+  				</select>
+				<small id="functionGroupHelp" class="form-text text-muted">Dropdown</small>
+  			</div>
+  			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
 </body>
 </html>
