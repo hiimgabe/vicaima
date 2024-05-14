@@ -1,8 +1,12 @@
 from django import forms
 
 class RenewBookForm(forms.Form):
-    Begin_Date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    End_Date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    ac = forms.DateField()
+    EVALUATOR_CHOICES = [
+        ('option1', 'Option 1'),
+        ('option2', 'Option 2'),
+    ]
+    Begin_Date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'date', 'class': 'date-field'}))
+    End_Date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'date', 'class': 'date-field'}))
+    Evaluator = forms.ChoiceField(choices=EVALUATOR_CHOICES, widget=forms.Select(), required=True)
     ad = forms.DateField()
     a2 = forms.DateField()
