@@ -18,7 +18,7 @@ class	Event(models.Model):
 	id_event = models.PositiveIntegerField(primary_key=True)
 	beginning = models.DateField()
 	end = models.DateField()
-	staus = models.BooleanField(default=False)
+	status = models.BooleanField(default=False)
 
 	def __str__(self):
 		return "Evento" + ' ' + self.id_event
