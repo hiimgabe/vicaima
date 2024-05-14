@@ -15,3 +15,9 @@ def	add_user(request):
 def add_event(request):
     form = RenewBookForm()
     return render(request, 'add_event.html', {'form': form})
+
+def aval_form(request):
+	return render(request, 'aval_form.html', {})
+
+def aval_list(request):
+	return render(request, 'aval_list.html', {})
