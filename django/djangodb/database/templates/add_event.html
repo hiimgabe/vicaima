@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ADD EVENT</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+	{% include 'navbar.html' %}
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery='full' %}
+	{% bootstrap_messages %}
+
+	<div class="card text-center">
+		<div class="card-header">
+			Add New Event
+		</div>
+		<div class="card-body">
+			<form action="/url/to/submit/" method="post" class="form">
+				{% csrf_token %}
+				{% bootstrap_form form %}
+				{% buttons %}
+				<button type="submit" class="btn btn-primary">
+					Submit
+				</button>
+				{% endbuttons %}
+			</form>
+		</div>
+		<div class="card-footer text-muted">
+			Vicaima
+		</div>
+	</div>
+
+</body>
+
+</html>
