@@ -1,8 +1,8 @@
 from django import forms
 
 class RenewBookForm(forms.Form):
-    renewal_date = forms.DateField()
-    ab = forms.DateTimeField()
+    Begin_Date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    End_Date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     ac = forms.DateField()
     ad = forms.DateField()
     a2 = forms.DateField()
