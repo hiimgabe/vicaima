@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.db.models import signals
 from django.dispatch import receiver
 from django.db.models.signals import m2m_changed
+from django.core.exceptions import ObjectDoesNotExist
+
 
 class Colaborator(models.Model):
 	id_colaborator = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
@@ -21,7 +23,10 @@ class Colaborator(models.Model):
 		return self.fname + ' ' + self.lname
 
 def get_default_evaluator():
-	return Colaborator.objects.get(id_colaborator=1).id_colaborator.id # type: ignore
+    try:
+        return Colaborator.objects.get(id_colaborator=1).id_colaborator.id # type: ignore
+    except ObjectDoesNotExist:
+        return None# type: ignore
 
 class Event(models.Model):
 	NORMAL_EVALUATION = 'NE'
