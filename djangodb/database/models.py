@@ -20,8 +20,8 @@ class Colaborator(models.Model):
 
 class Event(models.Model):
     id_event = models.AutoField(primary_key=True)
-    beginning = models.DateField()
-    end = models.DateField()
+    begin_event = models.DateField()
+    end_event = models.DateField()
     status = models.BooleanField(default=False)
     evaluated = models.ManyToManyField(Colaborator, related_name='evaluated_events')
 
