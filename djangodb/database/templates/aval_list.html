@@ -3,14 +3,14 @@
 {% block content %}
 	<h1>User Criteria List</h1>
 	<br/>
-	<h5>Evento: 6</h5>
+	<h5>{{evals.first.id_event}}</h5>
 	<br/>
 	<table class="table">
 	  <thead>
 		<tr>
 		  <th>Colaborador</th>
 		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
-		  title="Avalia a presença efetiva no posto de trabalho e o respeito 
+		  		  title="Avalia a presença efetiva no posto de trabalho e o respeito 
 pelos horários estabelecidos.">Assiduidade</th>
 		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
 			title="Observa sistematicamente os regulamentos e regras da Vicaima, 
@@ -34,7 +34,16 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 		</tr>
 	  </thead>
 	  <tbody>
+		{% for eval in evals %}
 		<tr>
+		  <td width="200">{{eval.id_evaluated.fname}} {{eval.id_evaluated.lname}}</td>
+		  {% for item in criteria %}
+		  <td><input type="number" class="form-control criteria-input" data-user={{eval.id_evaluated}} data-criteria="criteria1" min="1" max="3"></td>
+		  {% endfor %}
+		  <td class="total-column">0</td>
+		</tr>
+		{% endfor %}
+		<!-- <tr>
 		  <td width="200">Joao Almeida</td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria1" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria2" min="1" max="3"></td>
@@ -69,7 +78,7 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria4" min="1" max="3"></td>
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria5" min="1" max="3"></td>
 			<td class="total-column">0</td>
-		</tr>
+		</tr> -->
 		<!-- Add more rows for other users here -->
 	  </tbody>
 	</table>

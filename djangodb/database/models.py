@@ -21,7 +21,7 @@ class	Event(models.Model):
 	status = models.BooleanField(default=False)
 
 	def __str__(self):
-		return "Evento" + ' ' + self.id_event
+		return "Evento" + ' ' + str(self.id_event)
 
 class	Evaluation(models.Model):
 	id_evaluation = models.PositiveIntegerField(primary_key=True)
@@ -31,14 +31,14 @@ class	Evaluation(models.Model):
 	status = models.BooleanField()
 
 	def __str__(self):
-		return "Avaliação" + ' ' + self.id_avaliation
+		return "Avaliação" + ' ' + str(self.id_evaluation)
 
 class Criteria(models.Model):
 	id_evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE, db_column='id_evaluation')
 	question = models.CharField(max_length=200)
 	answer = models.PositiveIntegerField()
 	description = models.CharField(max_length=255)
-	comment = models.CharField(max_length=255)
+	comment = models.CharField(max_length=255, default="Nada a acrescentar")
 
 	def __str__(self):
-		return "Criteria" + ' ' + self.question
+		return self.question
