@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>User Criteria Form</h1>
+	<h1>Formulário de Avaliação</h1>
 	<br/>
 	<h5>Colaborador: Daniel Santos</h5>
 	<br/>
@@ -12,16 +12,16 @@
 				<div style="margin-right: 20px;">
 					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label>
 					<select class="form-select" aria-label="Default select example">
-						<option selected value="0">0 - onze ou mais faltas justificadas</option>
-						<option value="1">1 - Ate dez faltas justificadas</option>
+						<option selected value="0">0 - Onze ou mais faltas justificadas</option>
+						<option value="1">1 - Até dez faltas justificadas</option>
 						<option value="3">3 - Zero faltas justificadas</option>
 					</select>
 				</div>
 				<div style="margin-right: 20px;">
-					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label>
+					<label for="exampleFormControlInput1" class="form-label">Faltas Injustificadas</label>
 					<select class="form-select" aria-label="Default select example">
-						<option selected value="0">0 - tres ou mais faltas injustificadas</option>
-						<option value="1">1 - Ate duas faltas injustificadas</option>
+						<option selected value="0">0 - Três  ou mais faltas injustificadas</option>
+						<option value="1">1 - Até duas faltas injustificadas</option>
 						<option value="3">3 - Zero faltas injustificadas</option>
 					</select>
 				</div>
@@ -34,9 +34,9 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade e Disciplina</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1 - Satisfatorio</option>
+				<option value="1">1 - Satisfatório</option>
 				<option value="2">2 - Mediano</option>
-				<option value="3">3 - Excelenete</option>
+				<option value="3">3 - Excelente</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Observa sistematicamente os regulamentos e regras da Vicaima, nomeadamente no âmbito da higiene e 
@@ -48,9 +48,9 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Disponibilidade</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1 - Satisfatorio</option>
+				<option value="1">1 - Satisfatório</option>
 				<option value="2">2 - Mediano</option>
-				<option value="3">3 - Excelenete</option>
+				<option value="3">3 - Excelente</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Demonstra disponibilidade para aceitar trabalho suplementar assim como iniciativa na resolução de 
@@ -61,10 +61,10 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento e Expertise</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1 - Insatisfatorio</option>
+				<option value="1">1 - Insatisfatório</option>
 				<option value="2">2 - Mediano</option>
 				<option value="3">3 - Eficaz</option>
-				<option value="3">4 - Muito eficaz</option>
+				<option value="4">4 - Muito eficaz</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Capacidade para aplicar os conhecimentos e técnicas de trabalho essenciais para o desempenho das 
@@ -76,10 +76,10 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Produtividade</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1 - Insatisfatorio</option>
+				<option value="1">1 - Insatisfatório</option>
 				<option value="2">2 - Mediano</option>
 				<option value="3">3 - Eficaz</option>
-				<option value="3">4 - Muito eficaz</option>
+				<option value="4">4 - Muito eficaz</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.
@@ -94,8 +94,10 @@
 				<b>Classificação</b><p id="classification"></p>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Save</button>
-		<button type="submit" class="btn btn-success">Submit</button>
+		<div class="centered-btn">
+			<button type="submit" class="btn btn-primary btn-large">Save</button>
+			<button type="submit" class="btn btn-success btn-large">Submit</button>
+		</div>
 	</form>
 	<script>
 		$(document).ready(function () {
@@ -138,5 +140,17 @@
 			});
 		});
 	</script>
+	<style>
+		.centered-btn {
+			display: flex;
+			  justify-content: center;
+		}
+		.btn-large {
+			width: 200px;  /* Adjust as needed */
+			height: 50px;  /* Adjust as needed */
+			font-size: 20px;  /* Adjust as needed */
+			margin: 0 10px;  /* Adjust as needed */
+		}
+	</style>
 	
 {% endblock %}

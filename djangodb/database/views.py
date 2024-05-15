@@ -19,12 +19,15 @@ def add_event(request):
 
     return render(request, 'add_event.html', {'form': form})
 
-def aval_form(request):
-    return render(request, 'aval_form.html', {})
+def eval_form(request):
+	return render(request, 'eval_form.html', {})
 
-def aval_list(request):
-    evaluations = Evaluation.objects.filter(id_event=1)
-    return render(request, 'aval_list.html', {'evals':evaluations})
+def evaluated_form(request):
+	return render(request, 'evaluated_form.html', {})
+
+def eval_list(request):
+	evaluations = Evaluation.objects.filter(id_event=1)
+	return render(request, 'eval_list.html', {'evals':evaluations})
 
 def add_user(request):
     if request.method == 'POST':
