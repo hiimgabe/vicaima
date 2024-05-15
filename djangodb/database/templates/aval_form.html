@@ -5,7 +5,7 @@
 	<br/>
 	<h5>Colaborador: Daniel Santos</h5>
 	<br/>
-	<form>
+	<form method="POST">
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label>
 			<select class="form-select" aria-label="Default select example">
@@ -71,7 +71,31 @@
 				Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.
 			</small>
 		</div>
+		<div id="total" class="mb-3">
+			<b>Total</b><br/><span id="total-points">0</span>
+		</div>
 		<button type="submit" class="btn btn-primary">Save</button>
 		<button type="submit" class="btn btn-success">Submit</button>
 	</form>
+	<script>
+		$(document).ready(function () {
+			// Function to calculate and update total points
+			function updateTotal() {
+				var total = 0;
+				$('select').each(function () {
+					total += parseInt($(this).val()) || 0;
+				});
+				$('#total-points').text(total);
+			}
+	
+			// Call updateTotal function on page load
+			updateTotal();
+	
+			// Call updateTotal function whenever a select element changes
+			$('select').change(function () {
+				updateTotal();
+			});
+		});
+	</script>
+	
 {% endblock %}

@@ -20,7 +20,8 @@ def aval_form(request):
 	return render(request, 'aval_form.html', {})
 
 def aval_list(request):
-	return render(request, 'aval_list.html', {})
+	evaluations = Evaluation.objects.filter(id_event=1)
+	return render(request, 'aval_list.html', {'evals':evaluations})
 
 def add_user(request):
 	if request.method == 'POST':
