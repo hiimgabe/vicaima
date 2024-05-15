@@ -94,8 +94,10 @@
 				<b>Classificação</b><p id="classification"></p>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Save</button>
-		<button type="submit" class="btn btn-success">Submit</button>
+		<div class="centered-btn">
+			<button type="submit" class="btn btn-primary btn-large">Save</button>
+			<button type="submit" class="btn btn-success btn-large">Submit</button>
+		</div>
 	</form>
 	<script>
 		$(document).ready(function () {
@@ -138,5 +140,17 @@
 			});
 		});
 	</script>
+	<style>
+		.centered-btn {
+			display: flex;
+			  justify-content: center;
+		}
+		.btn-large {
+			width: 200px;  /* Adjust as needed */
+			height: 50px;  /* Adjust as needed */
+			font-size: 20px;  /* Adjust as needed */
+			margin: 0 10px;  /* Adjust as needed */
+		}
+	</style>
 	
 {% endblock %}
