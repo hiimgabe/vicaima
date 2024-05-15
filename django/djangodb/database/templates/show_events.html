@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ADD EVENT</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+	{% include 'navbar.html' %}
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery='full' %}
+	{% bootstrap_messages %}
+
+	<div class="container my-3">
+		<div class="card">
+			<div class="card-body">
+				<form method="get" class="form-inline">
+					<label for="status" class="mr-2">Filter by status:</label>
+					<select name="status" id="status" class="form-control" onchange="this.form.submit()">
+						<option value="all">All</option>
+						<option value="true">Finished</option>
+						<option value="false">Ongoing</option>
+					</select>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="d-flex flex-wrap justify-content-around">
+		{% for event in events %}
+		<div class="card mb-3" style="width: 15rem;">
+			<div class="card-header text-white" style="background-color: {% if event.status %}green{% else %}red{% endif %};">
+				Event {{ event.id_event }}
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Beginning: {{ event.beginning }}</h5>
+				<p class="card-text">End: {{ event.end }}</p>
+				<p class="card-text">Status: {{ event.status_as_string }}</p>
+				<p class="card-text">
+					Evaluated: 
+					<button class="btn-sm btn-primary" onclick="document.getElementById('evaluated-{{ event.id_event }}').style.display = document.getElementById('evaluated-{{ event.id_event }}').style.display == 'none' ? 'block' : 'none'">Toggle View</button>
+					<ul id="evaluated-{{ event.id_event }}" style="display: none;">
+					{% for evaluated in event.evaluated.all %}
+						<li>{{ evaluated }}</li>
+					{% endfor %}
+					</ul>
+				</p>
+			</div>
+			<div class="card-footer">
+				{% if not event.status %}
+				<a href="{% url 'change_status' event.id_event %}" class="btn btn-danger">Close Event</a>
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+</body>
+
+</html>
