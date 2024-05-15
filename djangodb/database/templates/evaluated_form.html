@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Formulário de Avaliação</h1>
+	<br/>
+	<h5>Evento: 1</h5>
+	<h5>Avaliador: Maria Silva</h5>
+	<h5>Data: 2024-05-10</h5>
+	<h5>Colaborador: Daniel Santos</h5>
+	<br/>
+	<div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label><br/>
+			<div style="display: flex;">
+				<div style="margin-right: 20px;">
+					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label><br/>
+					<div style="border: 1px solid grey; padding: 10px; border-radius: 5px; background-color: #e4e3e3;">3 - Zero faltas justificadas</div>
+				</div>
+				<div style="margin-right: 20px;">
+					<label for="exampleFormControlInput1" class="form-label">Faltas Injustificadas</label><br/>
+					<div style="border: 1px solid grey; padding: 10px; border-radius: 5px; background-color: #e4e3e3;">3 - Zero faltas injustificadas</div>
+				</div>
+			</div>
+			<small id="c1Help" class="form-text text-muted">
+				Avalia a presença efetiva no posto de trabalho e o respeito pelos horários estabelecidos.
+			</small><br/>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade e Disciplina</b></label><br/>
+			<div style="border: 1px solid grey; padding: 10px; border-radius: 5px; background-color: #e4e3e3;">2 - Mediano</div>
+			<small id="c1Help" class="form-text text-muted">
+				Observa sistematicamente os regulamentos e regras da Vicaima, nomeadamente no âmbito da higiene e 
+				segurança no trabalho, organização e limpeza; assim como revela capacidade de utilizar as ferramentas 
+				de que dispõe de forma a não haver desperdícios de material.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Disponibilidade</b></label><br/>
+			<div style="border: 1px solid grey; padding: 10px; border-radius: 5px; background-color: #e4e3e3;">3 - Excelente</div>
+			<small id="c1Help" class="form-text text-muted">
+				Demonstra disponibilidade para aceitar trabalho suplementar assim como iniciativa na resolução de 
+				problemas não previstos.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento e Expertise</b></label><br/>
+			<div style="border: 1px solid grey; padding: 10px; border-radius: 5px; background-color: #e4e3e3;">3 - Eficaz</div>
+			<small id="c1Help" class="form-text text-muted">
+				Capacidade para aplicar os conhecimentos e técnicas de trabalho essenciais para o desempenho das 
+				suas tarefas, assim como a preocupação de se manter atualizado e procurar oportunidades de 
+				desenvolvimento profissional.
+			</small>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"><b>Produtividade</b></label><br/>
+			<div style="border: 1px solid grey; padding: 10px; border-radius: 5px; background-color: #e4e3e3;">4 - Muito eficaz</div>
+			<small id="c1Help" class="form-text text-muted">
+				Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.
+			</small>
+		</div>
+		<div id="total" class="mb-3" style="display: flex;">
+			<div style="margin-right: 20px;">
+				<b>Resultado</b><br/><span id="total-points">18</span><br/><br/>
+			</div>
+			<div><p></p></div>
+			<div style="margin-right: 20px;">
+				<b>Classificação</b><p id="classification" style="color:green">A</p>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-success centered-btn">Sign</button>
+	</div>
+	<style>
+	.centered-btn {
+		display: block;
+		width: 200px;  /* Adjust as needed */
+		height: 50px;  /* Adjust as needed */
+		margin: 0 auto;
+		font-size: 20px;  /* Adjust as needed */
+	}
+	</style>
+	
+{% endblock %}
