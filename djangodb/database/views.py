@@ -22,19 +22,20 @@ def add_user(request):
 	if request.method == 'POST':
 		user_form = UserForm(request.POST)
 		colaborator_form = ColaboratorForm(request.POST)
-		if user_form.is_valid() and colaborator_form.is_valid():
-			user_form.save()
-			colaborator_form.save()
+		if user_form.is_valid():
+			user = user_form.save()
+		if colaborator_form.is_valid():
+			colaborator = colaborator_form.save(commit=False)
+			colaborator.id_colaborator = user
+			colaborator.save()
 			return redirect('home')
-		else:
-			user_form = UserForm()
-			colaborator_form = ColaboratorForm()
-
-		context = {
-			'user_form': user_form,
-			'colaborator_form': colaborator_form
-		}
-		return render(request, 'add_user.html', context)
+	user_form = UserForm()
+	colaborator_form = ColaboratorForm()
+	context = {
+		'user_form': user_form,
+		'colaborator_form': colaborator_form
+	}
+	return render(request, 'add_user.html', context)
 
 def dashboard(request):
     total_events = Event.objects.count()
