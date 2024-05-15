@@ -37,24 +37,24 @@
 	<div class="d-flex flex-wrap justify-content-around">
 		{% for event in events %}
 		<div class="card mb-3" style="width: 15rem;">
-			<div class="card-header text-white" style="background-color: {% if event.status %}green{% else %}red{% endif %};">
+			<div class="card-header text-white d-flex flex-wrap justify-content-around" style="background-color: {% if event.status %}grey{% else %}green{% endif %};">
 				Event {{ event.id_event }}
 			</div>
 			<div class="card-body">
-				<h5 class="card-title">Beginning: {{ event.beginning }}</h5>
-				<p class="card-text">End: {{ event.end }}</p>
-				<p class="card-text">Status: {{ event.status_as_string }}</p>
+				<p class="card-text"><b>Begin Date:</b> {{ event.begin_event }}</p>
+				<p class="card-text"><b>End Date:</b> {{ event.end_event }}</p>
+				<p class="card-text"><b>Status: </b> {{ event.status_as_string }}</p>
+				<p class="card-text"><b>Evaluator: </b> {{event.evaluator}}</p>
 				<p class="card-text">
-					Evaluated: 
-					<button class="btn-sm btn-primary" onclick="document.getElementById('evaluated-{{ event.id_event }}').style.display = document.getElementById('evaluated-{{ event.id_event }}').style.display == 'none' ? 'block' : 'none'">Toggle View</button>
-					<ul id="evaluated-{{ event.id_event }}" style="display: none;">
+					<b>Evaluated:</b> 
+					<ul id="evaluated-{{ event.id_event }};">
 					{% for evaluated in event.evaluated.all %}
 						<li>{{ evaluated }}</li>
 					{% endfor %}
 					</ul>
 				</p>
 			</div>
-			<div class="card-footer">
+			<div class="card-footer d-flex flex-wrap justify-content-around" >
 				{% if not event.status %}
 				<a href="{% url 'change_status' event.id_event %}" class="btn btn-danger">Close Event</a>
 				{% endif %}
@@ -64,5 +64,4 @@
 	</div>
 
 </body>
-
 </html>

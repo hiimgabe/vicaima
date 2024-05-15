@@ -18,12 +18,16 @@ class Colaborator(models.Model):
     def	__str__(self):
         return self.fname + ' ' + self.lname
 
+def get_default_evaluator():
+    return Colaborator.objects.get(id_colaborator=1).id_colaborator.id
+
 class Event(models.Model):
     id_event = models.AutoField(primary_key=True)
     begin_event = models.DateField()
     end_event = models.DateField()
     status = models.BooleanField(default=False)
     evaluated = models.ManyToManyField(Colaborator, related_name='evaluated_events')
+    evaluator = models.ForeignKey('database.Colaborator', on_delete=models.CASCADE, default=get_default_evaluator, related_name='evaluator_events')
 
     def status_as_string(self):
         return 'Finished' if self.status else 'Ongoing'
