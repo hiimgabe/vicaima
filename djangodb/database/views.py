@@ -9,8 +9,29 @@ from datetime import datetime
 import csv
 import io
 
-def	home(request):
-    return render(request, 'home.html')
+def home(request):
+    evaluations = Evaluation.objects.all()
+    not_started_count = evaluations.filter(status=Evaluation.NOT_STARTED).count()
+    ongoing_count = evaluations.filter(status=Evaluation.ONGOING).count()
+    done_count = evaluations.filter(status=Evaluation.DONE).count()
+    return render(request, 'home.html', {
+        'evaluations': evaluations,
+        'not_started_count': not_started_count,
+        'ongoing_count': ongoing_count,
+        'done_count': done_count
+    })
+
+def true_evaluations(request):
+    evaluations = Evaluation.objects.all()
+    not_started_count = Evaluation.objects.filter(status=Evaluation.NOT_STARTED).count()
+    ongoing_count = Evaluation.objects.filter(status=Evaluation.ONGOING).count()
+    done_count = Evaluation.objects.filter(status=Evaluation.DONE).count()
+    return render(request, 'true_evaluations.html', {
+        'evaluations': evaluations,
+        'not_started_count': not_started_count,
+        'ongoing_count': ongoing_count,
+        'done_count': done_count
+    })
 
 def add_event(request):
     if request.method == 'POST':

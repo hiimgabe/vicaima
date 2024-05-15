@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD EVENT</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {% bootstrap_messages %}
+
+    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+        <div class="card" style="height: 50%;>
+            <div class="card-body">
+                <h5 class="card-title text-center">Evaluation Status</h5>
+                <canvas id="evaluationChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('evaluationChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Not Started', 'Ongoing', 'Done'],
+                datasets: [{
+                    data: [{{ not_started_count }}, {{ ongoing_count }}, {{ done_count }}],
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Evaluation Status'
+                    }
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

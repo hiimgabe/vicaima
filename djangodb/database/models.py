@@ -23,10 +23,10 @@ class Colaborator(models.Model):
 		return self.fname + ' ' + self.lname
 
 def get_default_evaluator():
-    try:
-        return Colaborator.objects.get(id_colaborator=1).id_colaborator.id # type: ignore
-    except ObjectDoesNotExist:
-        return None# type: ignore
+	try:
+		return Colaborator.objects.get(id_colaborator=1).id_colaborator.id # type: ignore
+	except ObjectDoesNotExist:
+		return None# type: ignore
 
 class Event(models.Model):
 	NORMAL_EVALUATION = 'NE'
@@ -65,20 +65,34 @@ class Event(models.Model):
 				id_evaluator=self.evaluator,
 				id_evaluated=colaborator,
 				id_event=self,
-				status=False,
+				status='NS',
 			)
 
 @receiver(m2m_changed, sender=Event.evaluated.through)
 def create_evaluations(sender, instance, action, **kwargs):
-    if action == "post_add":
-        instance.create_evaluations()
+	if action == "post_add":
+		instance.create_evaluations()
 
 class	Evaluation(models.Model):
+	NOT_STARTED = 'NS'
+	ONGOING = 'OG'
+	DONE = 'DN'
+
+	STATUS_CHOICES = [
+		(NOT_STARTED, 'Not Started'),
+		(ONGOING, 'Ongoing'),
+		(DONE, 'Done'),
+	]
+
 	id_evaluation = models.AutoField(primary_key=True)
 	id_evaluator = models.ForeignKey(Colaborator, on_delete=models.CASCADE, related_name='evaluations_as_evaluator')
 	id_evaluated = models.ForeignKey(Colaborator, on_delete=models.CASCADE, related_name='evaluations_as_evaluated')
 	id_event = models.ForeignKey(Event, on_delete=models.CASCADE, db_column='id_event')
-	status = models.BooleanField()
+	status = models.CharField(
+		max_length=2,
+		choices=STATUS_CHOICES,
+		default=NOT_STARTED,
+	)
 
 	def __str__(self):
 		return "Avaliação" + ' ' + str(self.id_evaluation)

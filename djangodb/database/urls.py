@@ -12,5 +12,7 @@ urlpatterns = [
 	path('eval_list', views.eval_list, name="eval_list"),
 	path('show_events/', views.show_events, name='show_events'),
 	path('change_status/<int:event_id>/', views.change_status, name='change_status'),
+	path('true_evaluations/', views.true_evaluations, name='true_evaluations'),
+
 
 ]
