@@ -14,6 +14,9 @@ def add_event(request):
 def aval_form(request):
 	return render(request, 'aval_form.html', {})
 
+def evaluated_form(request):
+	return render(request, 'evaluated_form.html', {})
+
 def aval_list(request):
 	evaluations = Evaluation.objects.filter(id_event=1)
 	return render(request, 'aval_list.html', {'evals':evaluations})
