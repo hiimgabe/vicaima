@@ -7,24 +7,36 @@
 	<br/>
 	<form method="POST">
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label>
-			<select class="form-select" aria-label="Default select example">
-				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>
+			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label><br/>
+			<div style="display: flex; margin-right: 200px;">
+				<div>
+					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label>
+					<select class="form-select" aria-label="Default select example">
+						<option selected value="0">0 - onze ou mais faltas justificadas</option>
+						<option value="1">1 - Ate dez faltas justificadas</option>
+						<option value="3">3 - Zero faltas justificadas</option>
+					</select>
+				</div>
+				<div>
+					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label>
+					<select class="form-select" aria-label="Default select example">
+						<option selected value="0">0 - tres ou mais faltas injustificadas</option>
+						<option value="1">1 - Ate duas faltas injustificadas</option>
+						<option value="3">3 - Zero faltas injustificadas</option>
+					</select>
+				</div>
+			</div>
 			<small id="c1Help" class="form-text text-muted">
 				Avalia a presença efetiva no posto de trabalho e o respeito pelos horários estabelecidos.
-			</small>
+			</small><br/>
 		</div>
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade</b></label>
+			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade e Disciplina</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Observa sistematicamente os regulamentos e regras da Vicaima, nomeadamente no âmbito da higiene e 
@@ -36,9 +48,9 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Disponibilidade</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Demonstra disponibilidade para aceitar trabalho suplementar assim como iniciativa na resolução de 
@@ -46,12 +58,13 @@
 			</small>
 		</div>
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento</b></label>
+			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento e Expertise</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Capacidade para aplicar os conhecimentos e técnicas de trabalho essenciais para o desempenho das 
@@ -63,9 +76,10 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Produtividade</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.
