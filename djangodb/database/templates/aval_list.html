@@ -1,36 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>User Criteria List</h1>
+	<h1>User Criteria List</h1>
 	<br/>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Colaborador</th>
-          <th>Assiduidade</th>
-          <th>Responsabilidade</th>
-		  <th>Disponibilidade</th>
-		  <th>Conhecimento</th>
-		  <th>Produtividade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td width="200">Joao Almeida</td>
-          <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria1" min="1" max="3"></td>
-          <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria2" min="1" max="3"></td>
+	<table class="table">
+	  <thead>
+		<tr>
+		  <th>Colaborador</th>
+		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
+		  title="Avalia a presença efetiva no posto de trabalho e o respeito 
+pelos horários estabelecidos.">Assiduidade</th>
+		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
+			title="Observa sistematicamente os regulamentos e regras da Vicaima, 
+nomeadamente no âmbito da higiene e segurança no trabalho, 
+organização e limpeza; assim como revela capacidade de 
+utilizar as ferramentas de que dispõe de forma a não haver 
+desperdícios de material.">
+			Responsabilidade
+			</th>
+		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
+		  title="Demonstra disponibilidade para aceitar trabalho suplementar assim como 
+iniciativa na resolução de problemas não previstos.">Disponibilidade</th>
+		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
+		  title="Capacidade para aplicar os conhecimentos e técnicas de trabalho essenciais 
+para o desempenho das suas tarefas, assim como a preocupação de se manter atualizado 
+e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
+		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
+		  title="Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.">
+		  Produtividade</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr>
+		  <td width="200">Joao Almeida</td>
+		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria1" min="1" max="3"></td>
+		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria2" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria3" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria4" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria5" min="1" max="3"></td>
-        </tr>
-        <tr>
-          <td>Sara Torres</td>
-          <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria1" min="1" max="3"></td>
-          <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria2" min="1" max="3"></td>
+		</tr>
+		<tr>
+		  <td>Sara Torres</td>
+		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria1" min="1" max="3"></td>
+		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria2" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria3" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria4" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria5" min="1" max="3"></td>
-        </tr>
+		</tr>
 		<tr>
 			<td>Carlos Sousa</td>
 			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria1" min="1" max="3"></td>
@@ -47,9 +63,9 @@
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria4" min="1" max="3"></td>
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria5" min="1" max="3"></td>
 		  </tr>
-        <!-- Add more rows for other users here -->
-      </tbody>
-    </table>
+		<!-- Add more rows for other users here -->
+	  </tbody>
+	</table>
 	<button type="submit" class="btn btn-primary">Save</button>
 	<button type="submit" class="btn btn-success">Submit</button>
 {% endblock %}
