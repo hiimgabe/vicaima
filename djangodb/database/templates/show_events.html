@@ -43,7 +43,8 @@
 			<div class="card-body">
 				<p class="card-text"><b>Begin Date:</b> {{ event.begin_event }}</p>
 				<p class="card-text"><b>End Date:</b> {{ event.end_event }}</p>
-				<p class="card-text"><b>Status: </b> {{ event.status_as_string }}</p>
+				<p class="card-text"><b>Evaluator: </b> {{event.evaluator}}</p>
+				<p class="card-text"><b>Type: </b> {{ event.get_type_of_evaluation_display }}</p>
 				<p class="card-text"><b>Evaluator: </b> {{event.evaluator}}</p>
 				<p class="card-text">
 					<b>Evaluated:</b> 
