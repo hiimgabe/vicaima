@@ -28,8 +28,8 @@ class Event(models.Model):
     def status_as_string(self):
         return 'Finished' if self.status else 'Ongoing'
 
-	def __str__(self):
-		return "Evento" + ' ' + str(self.id_event)
+    def __str__(self):
+        return "Evento" + ' ' + str(self.id_event)
 
 class	Evaluation(models.Model):
     id_evaluation = models.PositiveIntegerField(primary_key=True)
@@ -38,15 +38,15 @@ class	Evaluation(models.Model):
     id_event = models.ForeignKey(Event, on_delete=models.CASCADE, db_column='id_event')
     status = models.BooleanField()
 
-	def __str__(self):
-		return "Avaliação" + ' ' + str(self.id_evaluation)
+    def __str__(self):
+        return "Avaliação" + ' ' + str(self.id_evaluation)
 
 class Criteria(models.Model):
-	id_evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE, db_column='id_evaluation')
-	question = models.CharField(max_length=200)
-	answer = models.PositiveIntegerField()
-	description = models.CharField(max_length=255)
-	comment = models.CharField(max_length=255, default="Nada a acrescentar")
+    id_evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE, db_column='id_evaluation')
+    question = models.CharField(max_length=200)
+    answer = models.PositiveIntegerField()
+    description = models.CharField(max_length=255)
+    comment = models.CharField(max_length=255, default="Nada a acrescentar")
 
-	def __str__(self):
-		return self.question
+    def __str__(self):
+        return self.question

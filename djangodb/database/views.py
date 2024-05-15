@@ -1,19 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import Colaborator, Event, Evaluation, Criteria
-from .forms import RenewBookForm, UserForm, ColaboratorForm, EventForm, EvaluationForm, CriteriaForm
+from .forms import AddEvent, UserForm, ColaboratorForm, EventForm, EvaluationForm, CriteriaForm
+from django.shortcuts import get_object_or_404, redirect
 
 
 def	home(request):
 	return render(request, 'home.html')
 
-def	add_event(request):
-	return render(request, 'add_event.html')
-
-def	add_user(request):
-	return render(request, 'add_user.html')
-
 def add_event(request):
-    form = RenewBookForm()
+    form = AddEvent()
     return render(request, 'add_event.html', {'form': form})
 
 def aval_form(request):
@@ -40,3 +35,34 @@ def add_user(request):
 			'colaborator_form': colaborator_form
 		}
 		return render(request, 'add_user.html', context)
+
+def dashboard(request):
+    total_events = Event.objects.count()
+    finished_events = Event.objects.filter(status=True).count()
+    ongoing_events = total_events - finished_events
+
+    context = {
+        'total_events': total_events,
+        'finished_events': finished_events,
+        'ongoing_events': ongoing_events,
+    }
+
+def change_status(request, event_id):
+    event = get_object_or_404(Event, id_event=event_id)
+    event.status = True
+    event.save()
+    return redirect('show_events')
+
+def show_events(request):
+    status = request.GET.get('status', 'all')
+
+    if status == 'all':
+        events = Event.objects.all()
+    elif status == 'true':
+        events = Event.objects.filter(status=True)
+    elif status == 'false':
+        events = Event.objects.filter(status=False)
+    else:
+        events = Event.objects.all()  # Fallback to showing all events
+
+    return render(request, 'show_events.html', {'events': events})
