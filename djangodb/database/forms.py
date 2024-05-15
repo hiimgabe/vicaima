@@ -5,7 +5,7 @@ from .models import User, Event, Evaluation, Criteria, Colaborator
 class AddEvent(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['begin_event', 'end_event', 'evaluator', 'evaluated']
+        fields = ['begin_event', 'end_event', 'type_of_evaluation', 'evaluator', 'evaluated']
         widgets = {
             'begin_event': forms.DateTimeInput(attrs={'type': 'date', 'class': 'date-field'}),
             'end_event': forms.DateTimeInput(attrs={'type': 'date', 'class': 'date-field'}),
