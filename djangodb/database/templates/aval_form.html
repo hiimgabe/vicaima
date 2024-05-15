@@ -7,24 +7,36 @@
 	<br/>
 	<form method="POST">
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label>
-			<select class="form-select" aria-label="Default select example">
-				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>
+			<label for="exampleFormControlInput1" class="form-label"><b>Assiduidade</b></label><br/>
+			<div style="display: flex;">
+				<div style="margin-right: 20px;">
+					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label>
+					<select class="form-select" aria-label="Default select example">
+						<option selected value="0">0 - onze ou mais faltas justificadas</option>
+						<option value="1">1 - Ate dez faltas justificadas</option>
+						<option value="3">3 - Zero faltas justificadas</option>
+					</select>
+				</div>
+				<div style="margin-right: 20px;">
+					<label for="exampleFormControlInput1" class="form-label">Faltas Justificadas</label>
+					<select class="form-select" aria-label="Default select example">
+						<option selected value="0">0 - tres ou mais faltas injustificadas</option>
+						<option value="1">1 - Ate duas faltas injustificadas</option>
+						<option value="3">3 - Zero faltas injustificadas</option>
+					</select>
+				</div>
+			</div>
 			<small id="c1Help" class="form-text text-muted">
 				Avalia a presença efetiva no posto de trabalho e o respeito pelos horários estabelecidos.
-			</small>
+			</small><br/>
 		</div>
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade</b></label>
+			<label for="exampleFormControlInput1" class="form-label"><b>Responsabilidade e Disciplina</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Observa sistematicamente os regulamentos e regras da Vicaima, nomeadamente no âmbito da higiene e 
@@ -36,9 +48,9 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Disponibilidade</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Demonstra disponibilidade para aceitar trabalho suplementar assim como iniciativa na resolução de 
@@ -46,12 +58,13 @@
 			</small>
 		</div>
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento</b></label>
+			<label for="exampleFormControlInput1" class="form-label"><b>Conhecimento e Expertise</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Capacidade para aplicar os conhecimentos e técnicas de trabalho essenciais para o desempenho das 
@@ -63,16 +76,23 @@
 			<label for="exampleFormControlInput1" class="form-label"><b>Produtividade</b></label>
 			<select class="form-select" aria-label="Default select example">
 				<option selected>0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
 			</select>
 			<small id="c1Help" class="form-text text-muted">
 				Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.
 			</small>
 		</div>
-		<div id="total" class="mb-3">
-			<b>Total</b><br/><span id="total-points">0</span>
+		<div id="total" class="mb-3" style="display: flex;">
+			<div style="margin-right: 20px;">
+				<b>Resultado</b><br/><span id="total-points">0</span><br/><br/>
+			</div>
+			<div><p></p></div>
+			<div style="margin-right: 20px;">
+				<b>Classificação</b><p id="classification"></p>
+			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Save</button>
 		<button type="submit" class="btn btn-success">Submit</button>
@@ -88,12 +108,33 @@
 				$('#total-points').text(total);
 			}
 	
+			function onload() {
+				var totalPoints = document.getElementById('total-points').innerText;
+				var classification = document.getElementById('classification');
+			
+				if (totalPoints >= 17) {
+					classification.innerText = 'A';
+					classification.style.color = 'green';
+				} else if (totalPoints >= 14) {
+					classification.innerText = 'B';
+					classification.style.color = 'blue';
+				} else if (totalPoints >= 10) {
+					classification.innerText = 'C';
+					classification.style.color = 'orange';
+				} else {
+					classification.innerText = 'D';
+					classification.style.color = 'red';
+				}
+			}
+
 			// Call updateTotal function on page load
 			updateTotal();
+			onload()
 	
 			// Call updateTotal function whenever a select element changes
 			$('select').change(function () {
 				updateTotal();
+				onload();
 			});
 		});
 	</script>

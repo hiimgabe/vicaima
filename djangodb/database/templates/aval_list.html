@@ -3,7 +3,8 @@
 {% block content %}
 	<h1>User Criteria List</h1>
 	<br/>
-	<h5>{{evals.first.id_event}}</h5>
+	<!-- <h5>{{evals.first.id_event}}</h5> -->
+	<h5>Evento 1</h5>
 	<br/>
 	<table class="table">
 	  <thead>
@@ -11,7 +12,10 @@
 		  <th>Colaborador</th>
 		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
 		  		  title="Avalia a presença efetiva no posto de trabalho e o respeito 
-pelos horários estabelecidos.">Assiduidade</th>
+pelos horários estabelecidos." style="font-weight: normal;"><b>Assiduidade</b><br/>(faltas justificadas)</th>
+		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
+		  		  title="Avalia a presença efetiva no posto de trabalho e o respeito 
+pelos horários estabelecidos." style="font-weight: normal;"><b>Assiduidade</b><br/>(faltas injustificadas)</th>
 		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
 			title="Observa sistematicamente os regulamentos e regras da Vicaima, 
 nomeadamente no âmbito da higiene e segurança no trabalho, 
@@ -30,55 +34,208 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
 		  title="Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.">
 		  Produtividade</th>
-		  <th>Total</th>
+		  <th>Resultado</th>
+		  <th>Classificação</th>
 		</tr>
 	  </thead>
 	  <tbody>
 		<!-- {% for eval in evals %}
-		<tr>
-		  <td width="200">{{eval.id_evaluated.fname}} {{eval.id_evaluated.lname}}</td>
-		  {% for item in criteria %}
-		  <td><input type="number" class="form-control criteria-input" data-user={{eval.id_evaluated}} data-criteria="criteria1" min="1" max="3"></td>
-		  {% endfor %}
-		  <td class="total-column">0</td>
-		</tr>
+			<tr>
+			<td width="200">{{eval.id_evaluated.fname}} {{eval.id_evaluated.lname}}</td>
+			<td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria1" min="1" max="3"></td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
+			</select></td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
+			</select></td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
+			</select></td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
+			</select></td>
+			<td class="total-column">0</td>
+			</tr>
 		{% endfor %} -->
 		<tr>
-		  <td width="200">Joao Almeida</td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria1" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria2" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria3" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria4" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria5" min="1" max="3"></td>
+		  <td width="200" class="name-column">Joao Almeida</td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected value="0">0 - onze ou mais faltas justificadas</option>
+			<option value="1">1 - Ate dez faltas justificadas</option>
+			<option value="3">3 - Zero faltas justificadas</option>
+			</select></td>
+		<td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected value="0">0 - tres ou mais faltas injustificadas</option>
+			<option value="1">1 - Ate duas faltas injustificadas</option>
+			<option value="3">3 - Zero faltas injustificadas</option>
+			</select></td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected>0</option>
+			<option value="1">1 - Satisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Excelenete</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected>0</option>
+			<option value="1">1 - Satisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Excelenete</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected>0</option>
+			<option value="1">1 - Insatisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Eficaz</option>
+			<option value="3">4 - Muito eficaz</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected>0</option>
+			<option value="1">1 - Insatisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Eficaz</option>
+			<option value="3">4 - Muito eficaz</option>
+		</select></td>
 		  <td class="total-column">0</td>
+		  <td class="classification"></td>
 		</tr>
 		<tr>
-		  <td>Sara Torres</td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria1" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria2" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria3" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria4" min="1" max="3"></td>
-		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria5" min="1" max="3"></td>
+		  <td class="name-column">Sara Torres</td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected value="0">0 - onze ou mais faltas justificadas</option>
+			<option value="1">1 - Ate dez faltas justificadas</option>
+			<option value="3">3 - Zero faltas justificadas</option>
+			</select></td>
+		<td><select class="form-select" aria-label="Default select example">
+			<option selected value="0">0 - tres ou mais faltas injustificadas</option>
+			<option value="1">1 - Ate duas faltas injustificadas</option>
+			<option value="3">3 - Zero faltas injustificadas</option>
+			</select></td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected>0</option>
+			<option value="1">1 - Satisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Excelenete</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected>0</option>
+			<option value="1">1 - Satisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Excelenete</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected>0</option>
+			<option value="1">1 - Insatisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Eficaz</option>
+			<option value="3">4 - Muito eficaz</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected>0</option>
+			<option value="1">1 - Insatisfatorio</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Eficaz</option>
+			<option value="3">4 - Muito eficaz</option>
+		</select></td>
 		  <td class="total-column">0</td>
+		  <td class="classification"></td>
 		</tr>
 		<tr>
-			<td>Carlos Sousa</td>
-			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria1" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria2" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria3" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria4" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria5" min="1" max="3"></td>
-			<td class="total-column">0</td>
-		  </tr>
+			<td class="name-column">Carlos Sousa</td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected value="0">0 - onze ou mais faltas justificadas</option>
+				<option value="1">1 - Ate dez faltas justificadas</option>
+				<option value="3">3 - Zero faltas justificadas</option>
+				</select></td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected value="0">0 - tres ou mais faltas injustificadas</option>
+				<option value="1">1 - Ate duas faltas injustificadas</option>
+				<option value="3">3 - Zero faltas injustificadas</option>
+				</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
+			</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
+			</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
+			</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
+			</select></td>
+			  <td class="total-column">0</td>
+			  <td class="classification"></td>
+			</tr>
 		  <tr>
-			<td>Catarina Silva</td>
-			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria1" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria2" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria3" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria4" min="1" max="3"></td>
-			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria5" min="1" max="3"></td>
-			<td class="total-column">0</td>
-		</tr>
+			<td class="name-column">Catarina Silva</td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected value="0">0 - onze ou mais faltas justificadas</option>
+				<option value="1">1 - Ate dez faltas justificadas</option>
+				<option value="3">3 - Zero faltas justificadas</option>
+				</select></td>
+			<td><select class="form-select" aria-label="Default select example">
+				<option selected value="0">0 - tres ou mais faltas injustificadas</option>
+				<option value="1">1 - Ate duas faltas injustificadas</option>
+				<option value="3">3 - Zero faltas injustificadas</option>
+				</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
+			</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Satisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Excelenete</option>
+			</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
+			</select></td>
+			  <td><select class="form-select" aria-label="Default select example">
+				<option selected>0</option>
+				<option value="1">1 - Insatisfatorio</option>
+				<option value="2">2 - Mediano</option>
+				<option value="3">3 - Eficaz</option>
+				<option value="3">4 - Muito eficaz</option>
+			</select></td>
+			  <td class="total-column">0</td>
+			  <td class="classification"></td>
+			</tr>
 		<!-- Add more rows for other users here -->
 	  </tbody>
 	</table>
@@ -86,14 +243,42 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 	<button type="submit" class="btn btn-success">Submit</button>
 	<script>
 		$(document).ready(function () {
-			$('.criteria-input').change(function () {
-				var $row = $(this).closest('tr');
-				var total = 0;
-				$row.find('.criteria-input').each(function () {
-					total += parseInt($(this).val()) || 0;
-				});
-				$row.find('.total-column').text(total);
+		  $('.form-select').change(function () {
+			var $row = $(this).closest('tr');
+			var total = 0;
+			$row.find('.form-select').each(function () {
+			  total += parseInt($(this).val()) || 0;
 			});
+			$row.find('.total-column').text(total);
+		  });
+		
+		  function onload() {
+			$('tr').each(function () {
+			  var $row = $(this);
+			  var totalPoints = parseInt($row.find('.total-column').text());
+			  var $classification = $row.find('.classification');
+		
+			  if (totalPoints >= 17) {
+				$classification.text('A');
+				$classification.css('color', 'green');
+			  } else if (totalPoints >= 14) {
+				$classification.text('B');
+				$classification.css('color', 'blue');
+			  } else if (totalPoints >= 10) {
+				$classification.text('C');
+				$classification.css('color', 'orange');
+			  } else {
+				$classification.text('D');
+				$classification.css('color', 'red');
+			  }
+			});
+		  }
+		
+		  onload();
+		
+		  $('select').change(function () {
+			onload();
+		  });
 		});
-	</script>
+		</script>
 {% endblock %}
