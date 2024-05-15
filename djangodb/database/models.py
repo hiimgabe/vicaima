@@ -8,6 +8,7 @@ from django.db.models.signals import m2m_changed
 
 class Colaborator(models.Model):
 	id_colaborator = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+	num_colaborator = models.IntegerField()
 	fname = models.CharField(max_length=100)
 	lname = models.CharField(max_length=100)
 	username = models.CharField(max_length=100)

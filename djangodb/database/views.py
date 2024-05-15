@@ -1,8 +1,13 @@
-from django.shortcuts import render, redirect
-from .models import Colaborator, Event, Evaluation, Criteria
-from .forms import AddEvent, UserForm, ColaboratorForm, EvaluationForm, CriteriaForm
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Colaborator, Event, Evaluation
+from .forms import AddEvent, UserForm, ColaboratorForm, UploadCSVForm
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
+from datetime import datetime
+import csv
+import io
 
 def	home(request):
     return render(request, 'home.html')
@@ -47,6 +52,54 @@ def add_user(request):
         'colaborator_form': colaborator_form
     }
     return render(request, 'add_user.html', context)
+
+def add_user_csv(request):
+	if request.method == 'POST':
+		form = UploadCSVForm(request.POST, request.FILES)
+		if form.is_valid():
+			csv_file = request.FILES['csv_file']
+			data_set = csv_file.read().decode('ISO-8859-1')
+			io_string = io.StringIO(data_set)
+			next(io_string)
+			for column in csv.reader(io_string, delimiter=';', quotechar="|"):
+				try:
+					if len(column) < 9:  # Check if there are enough columns
+						print(f"Skipping row due to insufficient columns: {column}")
+						continue
+
+					admission_date = column[6]
+					try:
+						parsed_date = datetime.strptime(admission_date, '%d/%m/%Y')
+					except ValueError:
+						print(f"Skipping row due to invalid date: {admission_date}")
+						continue
+
+					user, created = User.objects.get_or_create(
+						username=column[1],
+						defaults={'password': make_password('default_password')}
+					)
+					if created:
+						user.save()
+
+					colaborator, created = Colaborator.objects.get_or_create(
+						id_colaborator=user,
+						defaults={
+							'num_colaborator': column[0],
+							'fname': column[1],
+							'lname': column[2],
+							'department': column[4],
+							'role': column[5],
+							'admission_date': parsed_date,
+							'functional_group': column[7]
+						}
+					)
+					if created:
+						colaborator.save()
+				except Exception as e:
+					print(f"Error: {e}")
+	else:
+		form = UploadCSVForm()
+	return render(request, 'add_user_csv.html', {'form': form})
 
 def dashboard(request):
     total_events = Event.objects.count()

@@ -34,3 +34,6 @@ class	CriteriaForm(forms.ModelForm):
     class Meta:
         model = Criteria
         fields = ['id_evaluation','question','answer','description','comment']
+
+class UploadCSVForm(forms.Form):
+	csv_file = forms.FileField()

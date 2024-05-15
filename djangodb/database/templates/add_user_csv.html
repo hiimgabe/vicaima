@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ADD USER</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	{% include 'navbar.html' %}
+	<div class="container">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="csvFile">Upload CSV File</label>
+				<input type="file" name="csv_file">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
