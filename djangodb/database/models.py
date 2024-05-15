@@ -18,18 +18,33 @@ class Colaborator(models.Model):
     def	__str__(self):
         return self.fname + ' ' + self.lname
 
+def get_default_evaluator():
+    return Colaborator.objects.get(id_colaborator=1).id_colaborator.id
+
 class Event(models.Model):
-    id_event = models.AutoField(primary_key=True)
-    beginning = models.DateField()
-    end = models.DateField()
-    status = models.BooleanField(default=False)
-    evaluated = models.ManyToManyField(Colaborator, related_name='evaluated_events')
+	NORMAL_EVALUATION = 'NE'
+	EVALUATION_WITH_AUTOEVALUATION = 'EA'
+	FULL_360_EVALUATION = 'F3'
 
-    def status_as_string(self):
-        return 'Finished' if self.status else 'Ongoing'
+	TYPE_OF_EVALUATION_CHOICES = [
+		(NORMAL_EVALUATION, 'Normal'),
+		(EVALUATION_WITH_AUTOEVALUATION, 'Normal + Auto-Evaluation'),
+		(FULL_360_EVALUATION, 'Full 360'),
+	]
 
-    def __str__(self):
-        return "Evento" + ' ' + str(self.id_event)
+	id_event = models.AutoField(primary_key=True)
+	begin_event = models.DateField()
+	end_event = models.DateField()
+	status = models.BooleanField(default=False)
+	evaluated = models.ManyToManyField(Colaborator, related_name='evaluated_events')
+	evaluator = models.ForeignKey('database.Colaborator', on_delete=models.CASCADE, default=get_default_evaluator, related_name='evaluator_events')
+	type_of_evaluation = models.CharField(max_length=2, choices=TYPE_OF_EVALUATION_CHOICES, default=NORMAL_EVALUATION)
+
+	def status_as_string(self):
+		return 'Finished' if self.status else 'Ongoing'
+
+	def __str__(self):
+		return "Evento" + ' ' + str(self.id_event)
 
 class	Evaluation(models.Model):
     id_evaluation = models.PositiveIntegerField(primary_key=True)
