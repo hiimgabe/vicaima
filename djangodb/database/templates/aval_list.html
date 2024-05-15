@@ -3,6 +3,8 @@
 {% block content %}
 	<h1>User Criteria List</h1>
 	<br/>
+	<h5>Evento: 6</h5>
+	<br/>
 	<table class="table">
 	  <thead>
 		<tr>
@@ -28,6 +30,7 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 		  <th tabindex="0" data-toggle="tooltip" data-placement="top" 
 		  title="Apresenta volume e qualidade de trabalho num intervalo de tempo satisfatório.">
 		  Produtividade</th>
+		  <th>Total</th>
 		</tr>
 	  </thead>
 	  <tbody>
@@ -38,6 +41,7 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria3" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria4" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria5" min="1" max="3"></td>
+		  <td class="total-column">0</td>
 		</tr>
 		<tr>
 		  <td>Sara Torres</td>
@@ -46,6 +50,7 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria3" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria4" min="1" max="3"></td>
 		  <td><input type="number" class="form-control criteria-input" data-user="user2" data-criteria="criteria5" min="1" max="3"></td>
+		  <td class="total-column">0</td>
 		</tr>
 		<tr>
 			<td>Carlos Sousa</td>
@@ -54,6 +59,7 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria3" min="1" max="3"></td>
 			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria4" min="1" max="3"></td>
 			<td><input type="number" class="form-control criteria-input" data-user="user3" data-criteria="criteria5" min="1" max="3"></td>
+			<td class="total-column">0</td>
 		  </tr>
 		  <tr>
 			<td>Catarina Silva</td>
@@ -62,10 +68,23 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria3" min="1" max="3"></td>
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria4" min="1" max="3"></td>
 			<td><input type="number" class="form-control criteria-input" data-user="user4" data-criteria="criteria5" min="1" max="3"></td>
-		  </tr>
+			<td class="total-column">0</td>
+		</tr>
 		<!-- Add more rows for other users here -->
 	  </tbody>
 	</table>
 	<button type="submit" class="btn btn-primary">Save</button>
 	<button type="submit" class="btn btn-success">Submit</button>
+	<script>
+		$(document).ready(function () {
+			$('.criteria-input').change(function () {
+				var $row = $(this).closest('tr');
+				var total = 0;
+				$row.find('.criteria-input').each(function () {
+					total += parseInt($(this).val()) || 0;
+				});
+				$row.find('.total-column').text(total);
+			});
+		});
+	</script>
 {% endblock %}
