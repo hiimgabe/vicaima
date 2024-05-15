@@ -7,17 +7,17 @@ from django.dispatch import receiver
 from django.db.models.signals import m2m_changed
 
 class Colaborator(models.Model):
-	id_colaborator = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-	fname = models.CharField(max_length=100)
-	lname = models.CharField(max_length=100)
-	username = models.CharField(max_length=100)
-	department = models.CharField(max_length=100)
-	role = models.CharField(max_length=100)
-	admission_date = models.DateField()
-	functional_group = models.CharField(max_length=100)
+    id_colaborator = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    num_colaborator = models.PositiveIntegerField()
+    fname = models.CharField(max_length=100)
+    lname = models.CharField(max_length=100)
+    department = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    admission_date = models.DateField()
+    functional_group = models.CharField(max_length=100)
 
-	def	__str__(self):
-		return self.fname + ' ' + self.lname
+    def	__str__(self):
+        return self.fname + ' ' + self.lname
 
 def get_default_evaluator():
 	return Colaborator.objects.get(id_colaborator=1).id_colaborator.id # type: ignore

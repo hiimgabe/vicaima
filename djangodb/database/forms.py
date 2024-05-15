@@ -9,7 +9,6 @@ class AddEvent(forms.ModelForm):
         widgets = {
             'begin_event': forms.DateTimeInput(attrs={'type': 'date', 'class': 'date-field'}),
             'end_event': forms.DateTimeInput(attrs={'type': 'date', 'class': 'date-field'}),
-            # Add other fields' widgets if needed
         }
 
 class	UserForm(forms.ModelForm):
@@ -20,7 +19,7 @@ class	UserForm(forms.ModelForm):
 class	ColaboratorForm(forms.ModelForm):
     class Meta:
         model = Colaborator
-        fields = ['fname','lname','username','department','role','admission_date','functional_group']
+        fields = ['fname','lname','department','role','admission_date','functional_group']
 
 class DateInput(forms.DateInput):
     input_type = 'date'            
@@ -34,3 +33,6 @@ class	CriteriaForm(forms.ModelForm):
     class Meta:
         model = Criteria
         fields = ['id_evaluation','question','answer','description','comment']
+
+class UploadCSVForm(forms.Form):
+	csv_file = forms.FileField()
