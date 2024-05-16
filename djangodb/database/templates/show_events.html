@@ -38,7 +38,7 @@
 		{% for event in events %}
 		<div class="card mb-3" style="width: 15rem;">
 			<div class="card-header text-white d-flex flex-wrap justify-content-around" style="background-color: {% if event.status %}grey{% else %}green{% endif %};">
-				Event {{ event.id_event }}
+				<a href="{% url 'eval_list' %}" style="color: white;">Event {{ event.id_event }}</a>
 			</div>
 			<div class="card-body">
 				<p class="card-text"><b>Begin Date:</b> {{ event.begin_event }}</p>

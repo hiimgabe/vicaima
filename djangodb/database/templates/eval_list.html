@@ -241,7 +241,9 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 	</table>
 	<div class="centered-btn">
 		<button type="submit" class="btn btn-primary btn-large">Save</button>
-		<button type="submit" class="btn btn-success btn-large">Submit</button>
+		<a href="{% url 'eval_form' %}">
+			<button type="button" class="btn btn-success btn-large">Submit</button>
+		</a>
 	</div>
 	<script>
 		$(document).ready(function () {

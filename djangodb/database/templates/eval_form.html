@@ -96,7 +96,9 @@
 		</div>
 		<div class="centered-btn">
 			<button type="submit" class="btn btn-primary btn-large">Save</button>
-			<button type="submit" class="btn btn-success btn-large">Submit</button>
+			<a href="{% url 'evaluated_form' %}">
+				<button type="button" class="btn btn-success btn-large">Submit</button>
+			</a>
 		</div>
 	</form>
 	<script>

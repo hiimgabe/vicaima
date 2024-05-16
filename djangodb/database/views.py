@@ -9,8 +9,11 @@ from datetime import datetime
 import csv
 import io
 
+def login(request):
+    return render(request, 'login.html')
+
 def home(request):
-    evaluations = Evaluation.objects.all()
+    evaluations = Evaluation.objects.filter(id_event__status=False)
     not_started_count = evaluations.filter(status=Evaluation.NOT_STARTED).count()
     ongoing_count = evaluations.filter(status=Evaluation.ONGOING).count()
     done_count = evaluations.filter(status=Evaluation.DONE).count()
@@ -22,10 +25,10 @@ def home(request):
     })
 
 def true_evaluations(request):
-    evaluations = Evaluation.objects.all()
-    not_started_count = Evaluation.objects.filter(status=Evaluation.NOT_STARTED).count()
-    ongoing_count = Evaluation.objects.filter(status=Evaluation.ONGOING).count()
-    done_count = Evaluation.objects.filter(status=Evaluation.DONE).count()
+    evaluations = Evaluation.objects.filter(id_event__status=False)
+    not_started_count = evaluations.filter(status=Evaluation.NOT_STARTED).count()
+    ongoing_count = evaluations.filter(status=Evaluation.ONGOING).count()
+    done_count = evaluations.filter(status=Evaluation.DONE).count()
     return render(request, 'true_evaluations.html', {
         'evaluations': evaluations,
         'not_started_count': not_started_count,
@@ -59,15 +62,16 @@ def add_user(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         colaborator_form = ColaboratorForm(request.POST)
-        if user_form.is_valid():
+        if user_form.is_valid() and colaborator_form.is_valid():
             user = user_form.save()
-        if colaborator_form.is_valid():
             colaborator = colaborator_form.save(commit=False)
             colaborator.id_colaborator = user
+            colaborator.num_colaborator = 1
             colaborator.save()
             return redirect('home')
-    user_form = UserForm()
-    colaborator_form = ColaboratorForm()
+    else:
+        user_form = UserForm()
+        colaborator_form = ColaboratorForm()
     context = {
         'user_form': user_form,
         'colaborator_form': colaborator_form

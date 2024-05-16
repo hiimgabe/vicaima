@@ -16,16 +16,14 @@
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'show_events' %}">Events</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Details</a>
-			</li>
 		</ul>
 		<div class="dropdown">
 			<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  Add New +
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-			  <a class="dropdown-item" href="{% url 'add_user' %}">Add User</a>
+			  <a class="dropdown-item" href="{% url 'add_user' %}">Add User Manually</a>
+			  <a class="dropdown-item" href="{% url 'add_user_csv' %}">Add User Via CSV</a>
 			  <a class="dropdown-item" href="{% url 'add_event' %}">Add Event</a>
 			</div>
 		  </div>
