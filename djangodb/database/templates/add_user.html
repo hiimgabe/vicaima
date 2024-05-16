@@ -11,6 +11,7 @@
 <body>
 	{% include 'navbar.html' %}
 	<div class="container" style="padding: 5%;">
+		<h3>Add User</h3>
 		<form method="POST">
 			{% csrf_token %}
 			<div class="form-group">
@@ -85,7 +86,6 @@
   					<option>Chefes e Coordenadores</option>
   					<option>Operacionais</option>
   				</select>
-				<small id="functionGroupHelp" class="form-text text-muted">Dropdown</small>
   			</div>
   			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
