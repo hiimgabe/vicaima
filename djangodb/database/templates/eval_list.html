@@ -41,35 +41,45 @@ e procurar oportunidades de desenvolvimento profissional.">Conhecimento</th>
 	  <tbody>
 		<!-- {% for eval in evals %}
 			<tr>
-			<td width="200">{{eval.id_evaluated.fname}} {{eval.id_evaluated.lname}}</td>
-			<td><input type="number" class="form-control criteria-input" data-user="user1" data-criteria="criteria1" min="1" max="3"></td>
-			<td><select class="form-select" aria-label="Default select example">
-				<option selected>0</option>
-				<option value="1">1 - Satisfatório</option>
-				<option value="2">2 - Mediano</option>
-				<option value="3">3 - Excelente</option>
+			<td width="200" class="name-column">{{eval.id_evaluated.fname}} {{eval.id_evaluated.lname}}</td>
+			<td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected value="0">0 - Onze ou mais faltas justificadas</option>
+			<option value="1">1 - Até dez faltas justificadas</option>
+			<option value="3">3 - Zero faltas justificadas</option>
 			</select></td>
-			<td><select class="form-select" aria-label="Default select example">
-				<option selected>0</option>
-				<option value="1">1 - Satisfatório</option>
-				<option value="2">2 - Mediano</option>
-				<option value="3">3 - Excelente</option>
+		<td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected value="0">0 - Três  ou mais faltas injustificadas</option>
+			<option value="1">1 - Até duas faltas injustificadas</option>
+			<option value="3">3 - Zero faltas injustificadas</option>
 			</select></td>
-			<td><select class="form-select" aria-label="Default select example">
-				<option selected>0</option>
-				<option value="1">1 - Insatisfatório</option>
-				<option value="2">2 - Mediano</option>
-				<option value="3">3 - Eficaz</option>
-				<option value="3">4 - Muito eficaz</option>
-			</select></td>
-			<td><select class="form-select" aria-label="Default select example">
-				<option selected>0</option>
-				<option value="1">1 - Insatisfatório</option>
-				<option value="2">2 - Mediano</option>
-				<option value="3">3 - Eficaz</option>
-				<option value="3">4 - Muito eficaz</option>
-			</select></td>
-			<td class="total-column">0</td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected>0</option>
+			<option value="1">1 - Satisfatório</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Excelente</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected>0</option>
+			<option value="1">1 - Satisfatório</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Excelente</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example" onchange="onload()">
+			<option selected>0</option>
+			<option value="1">1 - Insatisfatório</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Eficaz</option>
+			<option value="4">4 - Muito eficaz</option>
+		</select></td>
+		  <td><select class="form-select" aria-label="Default select example">
+			<option selected>0</option>
+			<option value="1">1 - Insatisfatório</option>
+			<option value="2">2 - Mediano</option>
+			<option value="3">3 - Eficaz</option>
+			<option value="4">4 - Muito eficaz</option>
+		</select></td>
+		  <td class="total-column">0</td>
+		  <td class="classification"></td>
 			</tr>
 		{% endfor %} -->
 		<tr>
